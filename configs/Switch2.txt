@@ -1,23 +1,27 @@
-- Main configuration
-
+- Main configuration and security settings
 hostname Switch2
+enable secret cisco
 no service password-encryption
 
 - VLAN creation
-
 vlan 30
 name VLAN30_BRANCH
 
 - Access port configuration (PC3)
-
 interface FastEthernet0/1
  switchport access vlan 30
  switchport mode access
 
 - Trunk port configuration for Router2
-
 interface FastEthernet0/24
  switchport mode trunk
  switchport trunk allowed vlan 30
-!
+
+- Access configuration
+line con 0
+ password cisco
+ login
+line vty 0 4
+ password cisco
+ login
 end

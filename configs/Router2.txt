@@ -1,8 +1,9 @@
-- Main configuration
-
+- Main configuration and security settings
 hostname Router2
 no ip domain-lookup
+enable secret cisco
 no service password-encryption
+logging buffered 4096
 
 - Interface configuration
 interface GigabitEthernet0/0
@@ -24,22 +25,34 @@ interface GigabitEthernet0/1
 interface GigabitEthernet0/2
  shutdown
 
-- DHCP configuration
+- GRE Tunnel configuration
+interface Tunnel0
+ description "GRE_Tunnel_to_Router1"
+ ip address 10.1.1.2 255.255.255.252
+ tunnel source GigabitEthernet0/1
+ tunnel destination 10.0.0.1
 
+- DHCP configuration
 ip dhcp pool VLAN30_BRANCH
  network 192.168.30.0 255.255.255.0
  default-router 192.168.30.1
 
 - OSPFv2 (IPv4) configuration
-
 router ospf 1
  network 192.168.30.0 0.0.0.255 area 0
  network 10.0.0.0 0.0.0.3 area 0
+ network 10.1.1.0 0.0.0.3 area 0
 
 - OSPFv3 (IPv6) configuration
-
 ipv6 unicast-routing
 ipv6 router ospf 1
  router-id 2.2.2.2
-!
+
+- Access configuration
+line con 0
+ password cisco
+ login
+line vty 0 4
+ password cisco
+ login
 end

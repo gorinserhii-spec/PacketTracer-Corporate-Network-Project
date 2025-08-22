@@ -1,10 +1,9 @@
-- Main configuration
-
+- Main configuration and security settings
 hostname Switch1
+enable secret cisco
 no service password-encryption
 
 - VLAN creation
-
 vlan 10
 name VLAN10
 !
@@ -12,7 +11,6 @@ vlan 20
 name VLAN20
 
 - Access port configuration (PC1 and PC2)
-
 interface FastEthernet0/1
  switchport access vlan 10
  switchport mode access
@@ -22,9 +20,15 @@ interface FastEthernet0/2
  switchport mode access
 
 - Trunk port configuration for Router1
-
 interface FastEthernet0/24
  switchport trunk allowed vlan 10,20
  switchport mode trunk
-!
+
+- Access configuration
+line con 0
+ password cisco
+ login
+line vty 0 4
+ password cisco
+ login
 end
