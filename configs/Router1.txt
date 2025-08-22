@@ -1,0 +1,80 @@
+- Main configuration
+
+hostname Router1
+no ip domain-lookup
+no service password-encryption
+
+- Interface configuration
+
+interface GigabitEthernet0/0
+ no ip address
+!
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ ip access-group NO_ACCESS_VLAN10 in
+ ip nat inside
+ ipv6 address 2001:DB8:10:10::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ ip nat inside
+ ipv6 address 2001:DB8:20:20::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface GigabitEthernet0/1
+ ip address 10.0.0.1 255.255.255.252
+ ipv6 address 2001:DB8:FF::1/64
+ ipv6 enable
+ ipv6 ospf 1 area 0
+!
+interface GigabitEthernet0/2
+ ip address 209.165.200.1 255.255.255.0
+ ip nat outside
+
+- DHCP configuration
+
+ip dhcp excluded-address 192.168.10.1 192.168.10.10
+ip dhcp excluded-address 192.168.20.1 192.168.20.10
+ip dhcp pool VLAN10
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+!
+ip dhcp pool VLAN20
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+
+
+- NAT configuration
+
+ip nat inside source list 1 interface GigabitEthernet0/2 overload
+
+- ACL for NAT
+
+access-list 1 permit 192.168.10.0 0.0.0.255
+access-list 1 permit 192.168.20.0 0.0.0.255
+
+- ACL for traffic filtering
+
+ip access-list extended NO_ACCESS_VLAN10
+ deny ip 192.168.10.0 0.0.0.255 192.168.20.0 0.0.0.255
+ permit ip any any
+
+- OSPFv2 (IPv4) configuration
+
+router ospf 1
+ network 192.168.10.0 0.0.0.255 area 0
+ network 192.168.20.0 0.0.0.255 area 0
+ network 10.0.0.0 0.0.0.3 area 0
+
+- OSPFv3 (IPv6) configuration
+
+ipv6 unicast-routing
+ipv6 router ospf 1
+ router-id 1.1.1.1
+!
+end
