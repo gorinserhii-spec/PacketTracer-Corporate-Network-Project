@@ -80,7 +80,7 @@
 
 ## 🚀 How to Run
 ----------
-1. Open lab_fix_v2.pkt in Cisco Packet Tracer.
+1. Open corporate_network_project.pkt in Cisco Packet Tracer.
 2. Start the simulation.
 3. Verify network connectivity by pinging devices from different VLANs.
 
