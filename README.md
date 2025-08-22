@@ -61,7 +61,7 @@
 
 - Router Model Change: I initially used Cisco 4331 routers. However, I found that these models have a limited number of physical ports, which was insufficient for my design. To fix this, I replaced them with        Cisco 2911 routers, which provided the necessary ports for all connections (LAN, WAN, and Cloud).
 
-- Cloud-PT Configuration: The Cloud-PT device in Packet Tracer 8.x is a special WAN emulator. I initially had some confusion because it doesn't allow a direct IP address configuration on
+- Cloud-PT Configuration: The Cloud-PT device in Packet Tracer 8.2.2.0400 is a special WAN emulator. I initially had some confusion because it doesn't allow a direct IP address configuration on
   its interfaces. I resolved this by assigning the public IP address (209.165.200.1) directly to the Router1 interface connected to the cloud, treating the cloud as a transparent bridge.
 
 - Routing Protocol: The initial configuration used static routes for both IPv4 and IPv6. While functional, I realized this approach is not scalable. I replaced all static routes with the OSPF protocol,
