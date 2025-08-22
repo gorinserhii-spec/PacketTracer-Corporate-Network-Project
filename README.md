@@ -57,22 +57,20 @@
 
 # Project Evolution: From Static to Dynamic
 ---------------------
- This section details the key changes and fixes made during the project. It shows how the network evolved from a basic static setup to a more advanced, dynamic, and realistic topology.
+ This section details the key changes and fixes I made during the project. It shows how the network evolved from a basic static setup to a more advanced, dynamic, and realistic topology.
 
-- Router Model Change: We initially used Cisco 4331 routers. However, these models have a limited number of physical ports (2), which was insufficient for our design. 
-We successfully replaced them with Cisco 2911 routers, which provided the necessary ports for all connections (LAN, WAN, and Cloud).
+- Router Model Change: I initially used Cisco 4331 routers. However, I found that these models have a limited number of physical ports, which was insufficient for my design. To fix this, I replaced them with        Cisco 2911 routers, which provided the necessary ports for all connections (LAN, WAN, and Cloud).
 
-- Cloud-PT Configuration: The Cloud-PT device in Packet Tracer 8.x is a special WAN emulator. Initially, there was confusion because it doesn't allow a direct IP address configuration on 
-its interfaces. We resolved this by assigning the public IP address (209.165.200.1) directly to the Router1 interface connected to the cloud, treating the cloud as a transparent bridge.
+- Cloud-PT Configuration: The Cloud-PT device in Packet Tracer 8.x is a special WAN emulator. I initially had some confusion because it doesn't allow a direct IP address configuration on
+  its interfaces. I resolved this by assigning the public IP address (209.165.200.1) directly to the Router1 interface connected to the cloud, treating the cloud as a transparent bridge.
 
-- Routing Protocol: The initial configuration used static routes for both IPv4 and IPv6. While functional, this approach is not scalable. We replaced all static routes with the OSPF protocol, 
-which allows the routers to automatically learn about new networks, simplifying future expansion and improving network resiliency.
+- Routing Protocol: The initial configuration used static routes for both IPv4 and IPv6. While functional, I realized this approach is not scalable. I replaced all static routes with the OSPF protocol,
+  which allows the routers to automatically learn about new networks, simplifying future expansion and improving network resiliency.
 
-- IPv6 Addressing: The PCs were receiving IPv6 addresses with a unique host portion, which seemed unexpected. We confirmed that this is the correct behavior of SLAAC, where each host 
-automatically generates its unique address based on its MAC address and the network prefix from the router.
+- IPv6 Addressing: I noticed that the PCs were receiving IPv6 addresses with a unique host portion, which seemed unexpected at first. I confirmed that this is the correct behavior of SLAAC, where each host          automatically generates its unique address based on its MAC address and the network prefix from the router.
 
-- ACL Behavior: The ping test from PC1 to PC2 resulted in a "Destination host unreachable" message instead of "Request timed out." This is a valid and correct response from the router, 
-indicating that the ACL is working by explicitly denying the traffic and sending an ICMP message back to the source.
+- ACL Behavior: The ping test from PC1 to PC2 resulted in a "Destination host unreachable" message instead of "Request timed out." I learned that this is a valid and correct response from the router,
+  indicating that the ACL is working by explicitly denying the traffic and sending an ICMP message back to the source.
 
 
 ## 📷 Screenshots
