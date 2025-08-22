@@ -16,9 +16,13 @@
   
 - Set up NAT to allow internal devices to access an external network (Internet).
 
+- Establish a secure site-to-site connection using a GRE Tunnel.
+
 - Integrate IPv6 to prepare the network for modern internet protocols.
 
 - Apply ACLs to control and restrict traffic between different network segments.
+
+- Configure Quality of Service (QoS) to prioritize mission-critical traffic.
 
 ## 🛠 Equipment Used
 --------------
@@ -44,8 +48,12 @@
   
 - Dynamic Routing (OSPF): Instead of static routes, OSPF is configured for both IPv4 and IPv6 (OSPFv2 and OSPFv3) to allow the routers to automatically discover and share routing information, 
   ensuring the network is scalable and resilient to topology changes.
+  
+- GRE Tunnel: A secure, site-to-site tunnel is established between the main office and the branch office.
 
 - ACLs (Access Control Lists): A security rule is implemented on Router1 to explicitly deny communication from VLAN 10 to VLAN 20, while permitting all other traffic.
+
+- QoS: Traffic from a specific VLAN is prioritized to guarantee a certain level of performance.
 
 ## 🔧 Configuration Summary
 ---------------------
