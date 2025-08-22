@@ -3,9 +3,9 @@
 
 ## 📌 Description
 -----------
-  This project demonstrates the design and implementation of a functional and secure corporate network in Cisco Packet Tracer. 
-  The network includes a main office and a branch office, showcasing key concepts such as VLANs, 
-  dynamic routing (OSPF), network address translation (NAT), IPv6, and access control lists (ACLs).
+  This project simulates an advanced corporate network environment using Cisco Packet Tracer. 
+  It demonstrates the design and implementation of a secure and scalable network for a main office and a branch office, 
+  showcasing real-world concepts such as VLANs, dynamic routing (OSPF), network address translation (NAT), IPv6, and access control lists (ACLs).
 
 ## 🎯 Objectives
 ----------
