@@ -101,3 +101,6 @@ By integrating dynamic routing, IPv6, NAT, and ACLs, it highlights key principle
 # Author: Serhii Gorin 
 # Date: 23.08.2025
 
+---
+## ⚠️ Disclaimer
+This is an educational project for portfolio purposes. Cisco Packet Tracer and all associated logos are the property of Cisco Systems, Inc.
